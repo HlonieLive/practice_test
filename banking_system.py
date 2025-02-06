@@ -10,16 +10,21 @@ def deposit(account: dict, amount: float) -> None:
 
     return account[key]
 
-accounts = {
-    'John': {'balance': 1000},
-    'Jane': {'balance': 500}
-    }
-
-print(deposit(accounts["John"], 200))
+# accounts = {"John": {"balance": 1000}, "Jane": {"balance": 500}}
+# print(deposit(accounts["John"], 200))
 
 # Function to withdraw money from an account
 def withdraw(account: dict, amount: float) -> None:
-    pass
+
+    for key, value in account.items():
+        if amount > account[key]:
+            return "Insufficient funds"
+        account[key] -= amount
+    return account[key]
+accounts = {"John": {"balance": 1000}, "Jane": {"balance": 500}}
+print(withdraw(accounts["John"], 500))
+print(withdraw(accounts["John"], 1000))
+
 
 # Function to transfer money between two accounts
 def transfer(from_account: dict, to_account: dict, amount: float) -> None:
