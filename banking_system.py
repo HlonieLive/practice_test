@@ -1,12 +1,8 @@
 # Function to deposit money into an account
 def deposit(account: dict, amount: float) -> None:
-    # names = []
-    # holders = []
 
-    for key, value in account.items():
+    for key in account.keys():
         account[key] += amount
-        # names.append(key)
-        # holders.append(value)
 
     return account[key]
 
@@ -17,18 +13,26 @@ def deposit(account: dict, amount: float) -> None:
 def withdraw(account: dict, amount: float) -> None:
 
     for key, value in account.items():
-        if amount > account[key]:
+        if amount > value:
             return "Insufficient funds"
         account[key] -= amount
-    return account[key]
-accounts = {"John": {"balance": 1000}, "Jane": {"balance": 500}}
-print(withdraw(accounts["John"], 500))
-print(withdraw(accounts["John"], 1000))
+    return value
+# accounts = {"John": {"balance": 1000}, "Jane": {"balance": 500}}
+# print(withdraw(accounts["John"], 500))
+# print(withdraw(accounts["John"], 1000))
 
 
 # Function to transfer money between two accounts
 def transfer(from_account: dict, to_account: dict, amount: float) -> None:
-    pass
+    for key1, value1 in from_account.items():
+        for key2, value2 in to_account.items():
+            from_account[key1] -= amount
+            to_account[key2] += amount
+    return value1
+
+# accounts = {"John": {"balance": 1000}, "Jane": {"balance": 500}}
+# print(transfer(accounts['John'], accounts['Jane'], 300))
+
 
 # Function to add a new account to the system
 def add_account(accounts: dict, owner: str, initial_balance: float) -> None:
