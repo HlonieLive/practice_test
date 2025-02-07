@@ -25,7 +25,7 @@ def withdraw(account: dict, amount: float) -> None:
 # Function to transfer money between two accounts
 def transfer(from_account: dict, to_account: dict, amount: float) -> None:
     for key1, value1 in from_account.items():
-        for key2, value2 in to_account.items():
+        for key2 in to_account.keys():
             from_account[key1] -= amount
             to_account[key2] += amount
     return value1
@@ -36,12 +36,17 @@ def transfer(from_account: dict, to_account: dict, amount: float) -> None:
 
 # Function to add a new account to the system
 def add_account(accounts: dict, owner: str, initial_balance: float) -> None:
-    pass
+    if owner in accounts:
+        return True
+    accounts[owner] = {"balance":initial_balance}
+    return accounts
 
 # Function to find an account by owner's name
 def find_account(accounts: dict, owner: str) -> dict:
-    pass
+    if owner not in accounts:
+        return None
+    return accounts[owner]
 
 # Function to display all accounts in the system
 def display_all_accounts(accounts: dict) -> str:
-    return '\n'.join([f"{owner}: {account['balance']}" for owner, account in accounts.items()])
+    return " ".join([f"{key}: {value["balance"]}" for key, value in accounts.items()])
