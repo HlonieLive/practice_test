@@ -6,9 +6,6 @@ def deposit(account: dict, amount: float) -> None:
 
     return account[key]
 
-# accounts = {"John": {"balance": 1000}, "Jane": {"balance": 500}}
-# print(deposit(accounts["John"], 200))
-
 # Function to withdraw money from an account
 def withdraw(account: dict, amount: float) -> None:
 
@@ -17,10 +14,6 @@ def withdraw(account: dict, amount: float) -> None:
             return "Insufficient funds"
         account[key] -= amount
     return value
-# accounts = {"John": {"balance": 1000}, "Jane": {"balance": 500}}
-# print(withdraw(accounts["John"], 500))
-# print(withdraw(accounts["John"], 1000))
-
 
 # Function to transfer money between two accounts
 def transfer(from_account: dict, to_account: dict, amount: float) -> None:
@@ -29,9 +22,6 @@ def transfer(from_account: dict, to_account: dict, amount: float) -> None:
             from_account[key1] -= amount
             to_account[key2] += amount
     return value1
-
-# accounts = {"John": {"balance": 1000}, "Jane": {"balance": 500}}
-# print(transfer(accounts['John'], accounts['Jane'], 300))
 
 
 # Function to add a new account to the system
